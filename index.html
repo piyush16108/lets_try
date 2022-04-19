@@ -1,11 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Index</title>
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-  <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://piyush16108.github.io/lets_try/bootstrap/css/bootstrap.min.css">
+  <script src="https://piyush16108.github.io/lets_try/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <style>
   .fixedFooter  {
@@ -50,15 +50,41 @@
 		width:100%;
    }
    
+   .goToVerse {
+		border-radius: 15px;
+		height: 20px;
+   }
    
+   .goToVerseTextbox {
+		width: 40px;
+		font-size:70%;
+		text-align: center;
+   }
+   
+   button {
+		border-radius: 15px;
+   }
    
   </style>
+  <script>
+		$(document).ready(function(){
+			var goToURL = "https://vedabase.io/en/library/";
+			$("#goFindVerse").click(function(){
+				var book = $("#book").val();
+				var level1Val = $("#level1").val();
+				var level2Val = $("#level2").val();
+				var level3Val = $("#level3").val();
+				goToURL += (book + "/" + level1Val + "/" + level2Val + "/" + level3Val);
+				window.open(goToURL,"_self");
+			});
+		});
+  </script>
 </head>
 
 <body>
 	<div id="nav-placeholder">
 	</div>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="Index.html"><img src="Srila Prabhupada.jpg" height="50"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
@@ -84,6 +110,34 @@
           </ul>
         </li>
       </ul>
+	  <ul class="navbar-nav ms-auto">
+		<li class="nav-item">
+          <select class="goToVerse" name="book" id="book" style="font-size:10px">
+			<option value="na">          </option>
+			<option value="bg">BG (श्रीमद् भगवद् गीता)</option>
+			<option value="sb">SB (श्रीमद्भागवतम्)</option>
+			<option value="cc">CC (श्रीचैतन्य-चरितामृत)</option>
+		  </select>
+		  </li>
+		  <li class="nav-item">
+		  <input class="goToVerse goToVerseTextbox" type="text" name="canto" id="level1" maxlength="6" size="2"/>
+		  </li>
+		  <li class="nav-item">
+		  <input class="goToVerse goToVerseTextbox" type="text" name="canto" id="level2" maxlength="2" size="2"/>
+		  </li>
+		  <li class="nav-item">
+		  <input class="goToVerse goToVerseTextbox" type="text" name="canto" id="level3" maxlength="3" size="2"/>
+        </li>
+		<li class="nav-item">
+          <button type="button" id="goFindVerse" class="btn btn-primary">Go</button>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="#">Test Right</a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="#">Test Right</a>
+        </li>
+	  </ul>
     </div>
   </div>
 </nav>
@@ -100,7 +154,7 @@
 </div>
 <div class="container-fluid">
 	<h1>
-		Bhaktivedanta Vedabase
+		Div class="container-fluid"
 	</h1>
 
 </div>
@@ -120,7 +174,7 @@
 	  <p>The .container-fluid class provides a full width container, spanning the entire width of the viewport.</p>
 	</div>
 	<div class="container-fluid">
-    <object class="container-fluid" data="test.pdf" type="application/pdf" height="600">
+    <object class="container-fluid" data="https://piyush16108.github.io/lets_try/sb/10/pdf_10_50.pdf" type="application/pdf" height="600">
         alt : <a href="test.pdf">test.pdf</a>
     </object>
 </div>
