@@ -68,6 +68,8 @@
   </style>
   <script>
 		$(document).ready(function(){
+			alert("Loading navbar");
+			$("#nav-placeholder").load("https://piyush16108.github.io/lets_try/nav.html");
 			var goToURL = "https://vedabase.io/en/library/";
 			$("#goFindVerse").click(function(){
 				var book = $("#book").val();
@@ -84,6 +86,7 @@
 <body>
 	<div id="nav-placeholder">
 	</div>
+	<!--
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="Index.html"><img src="Srila Prabhupada.jpg" height="50"></a>
@@ -141,6 +144,8 @@
     </div>
   </div>
 </nav>
+-->
+
 <div class="fixedFooter">
 	<div id="dateInput">
 		<input type="text">
