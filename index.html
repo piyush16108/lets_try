@@ -61,8 +61,10 @@
 		text-align: center;
    }
    
-   button {
-		border-radius: 15px;
+   #goFindVerse, #hideNavBar, #hideFooter {
+		border-radius: 50px;
+		height: 20px;
+		line-height: 0px;
    }
    
   </style>
@@ -70,7 +72,11 @@
 		$(document).ready(function(){
 			//alert("Loading navbar");
 			$("#nav-placeholder").load("https://piyush16108.github.io/lets_try/nav.html");
+			
+			var stickNavBar = true;
+			var showFooter = true;
 			var goToURL = "https://vedabase.io/en/library/";
+			
 			$("#goFindVerse").click(function(){
 				var book = $("#book").val();
 				var level1Val = $("#level1").val();
@@ -78,6 +84,34 @@
 				var level3Val = $("#level3").val();
 				goToURL += (book + "/" + level1Val + "/" + level2Val + "/" + level3Val);
 				window.open(goToURL,"_self");
+			});
+			
+			$("#hideNavBar").click(function(){
+				if(stickNavBar){
+					$("#navBar").removeClass("sticky-top");
+					stickNavBar = false;
+					$(this).text("Keep Header");
+				}
+				
+				else if(!stickNavBar){
+					$("#navBar").addClass("sticky-top");
+					stickNavBar = true;
+					$(this).text("Hide Header");
+				}
+			});
+			
+			$("#hideFooter").click(function(){
+				if(showFooter){
+					$("#fixedFooter").hide();
+					showFooter = false;
+					$(this).text("Show Footer");
+				}
+				
+				else if(!showFooter){
+					$("#fixedFooter").show();
+					showFooter = true;
+					$(this).text("Hide Footer");
+				}
 			});
 		});
   </script>
