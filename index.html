@@ -91,13 +91,13 @@
 				if(stickNavBar){
 					$("#navBar").removeClass("sticky-top");
 					stickNavBar = false;
-					$(this).text("Keep Header");
+					$("#hideNavBar").text("Keep Header");
 				}
 				
 				else if(!stickNavBar){
 					$("#navBar").addClass("sticky-top");
 					stickNavBar = true;
-					$(this).text("Hide Header");
+					$("#hideNavBar").text("Hide Header");
 				}
 			});
 			
@@ -105,13 +105,13 @@
 				if(showFooter){
 					$("#fixedFooter").hide();
 					showFooter = false;
-					$(this).text("Show Footer");
+					$("#hideFooter").text("Show Footer");
 				}
 				
 				else if(!showFooter){
 					$("#fixedFooter").show();
 					showFooter = true;
-					$(this).text("Hide Footer");
+					$("#hideFooter").text("Hide Footer");
 				}
 			});
 		});
