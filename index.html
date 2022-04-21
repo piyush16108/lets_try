@@ -87,7 +87,7 @@
 				window.open(goToURL,"_self");
 			});
 			
-			$("#hideNavBar").click(function(){
+			$("#nav-placeholder").on("click", "#hideNavBar", function(){
 				if(stickNavBar){
 					$("#navBar").removeClass("sticky-top");
 					stickNavBar = false;
@@ -101,7 +101,7 @@
 				}
 			});
 			
-			$("#hideFooter").click(function(){
+			$("#nav-placeholder").on("click", "##hideFooter", function(){
 				if(showFooter){
 					$("#fixedFooter").hide();
 					showFooter = false;
