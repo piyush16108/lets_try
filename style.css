@@ -1,0 +1,77 @@
+/*
+  .fixedFooter  {
+		overflow: hidden;
+		background-color: #333;
+		position: fixed;
+		bottom: 0;
+		width:100%;
+   }
+   
+   .fixedFooter input{
+		margin:10px;
+		text-align:center;
+		background-color: #333;
+		color: #fff;
+		//outline: none;
+		border-top-style: hidden;
+        border-right-style: hidden;
+        border-left-style: hidden;
+		border-bottom-style: hidden;
+   }
+   
+   .fixedFooter #dateInput{
+		float:left;
+		width:10%;
+   }
+   
+   .fixedFooter #verseNoInput{
+		float:right;
+		width:10%;
+		margin-right:90px;
+   }
+   
+   .fixedFooter #speakerInput {
+		width:400px;
+		margin:auto;
+		text-align:center;
+		outline-color:yellow;
+   }
+   
+   .fixedFooter #speakerInput input {
+		width:100%;
+   }
+	  */
+	  
+  #speaker {
+	text-align: center;
+  	display: flex;
+  	justify-content: center;
+	width: 100%;
+	height:10%;
+	position: fixed;
+	background: #333;
+	color: #fff;
+	bottom: 0;
+	font-size: 70%;
+	padding: 0;
+	border: 0;
+	align:center;
+	 } 
+   
+   .goToVerse {
+		border-radius: 15px;
+		height: 20px;
+   }
+   
+   .goToVerseTextbox {
+		width: 40px;
+		font-size:70%;
+		text-align: center;
+   }
+   
+   #goFindVerse, #hideNavBar, #hideFooter {
+		border-radius: 50px;
+		height: 20px;
+		line-height: 0px;
+   }
+   
