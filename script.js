@@ -15,9 +15,14 @@ $(document).ready(function(){
         				handle.text(ui.value);
 					font_size = $(this).slider("value");
 					$("body *").not("nav").css("font-size", font_size);
-					console.log("//");
+					//console.log("//");
       				}
    			 });
+	
+			$("#slider").mouseout(function(){
+				console.log("Mouse out!!!");
+				$("body *").not("nav").css("font-size",$("#slider").slider("option", "value"));
+			});
 	
 			var stickNavBar = true;
 			var showFooter = true;
