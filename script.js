@@ -20,8 +20,8 @@ $(document).ready(function(){
    			 });
 	
 			$("#slider").mouseup(function(){
-				console.log("Mouse up!!!");
-				$("body *").not("nav").css("font-size",$("#slider").slider("option", "value"));
+				console.log("Nav-placeholder!!!");
+				$("body *").not("#nav-placeholder").css("font-size",$("#slider").slider("option", "value"));
 			});
 	
 			var stickNavBar = true;
