@@ -42,6 +42,21 @@
    }
 	  */
 	  
+#custom-handle {
+    width: 3em;
+    height: 1.6em;
+    top: 50%;
+    margin-top: -.8em;
+    text-align: center;
+    line-height: 1.6em;
+  }
+  
+  #slider {
+	width: 80%;
+	margin: auto;
+  }
+
+
   #fixedFooter {
 	text-align: center;
   	display: flex;
