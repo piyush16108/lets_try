@@ -1,6 +1,6 @@
 var font_size = 10;
 $(document).ready(function(){
-			alert("Loading navbar");
+			//alert("Loading navbar");
 			$("#nav-placeholder").load("https://piyush16108.github.io/lets_try/nav.html");
 			
 			var handle = $( "#custom-handle" );
@@ -14,7 +14,7 @@ $(document).ready(function(){
       				slide: function( event, ui ) {
         				handle.text(ui.value);
 					font_size = $(this).slider("value");
-					$("body, h5").css("font-size", font_size);
+					$("body *").not("nav").css("font-size", font_size);
 					console.log("//");
       				}
    			 });
