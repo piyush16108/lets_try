@@ -1,7 +1,23 @@
+var font_size = 10;
 $(document).ready(function(){
 			//alert("Loading navbar");
 			$("#nav-placeholder").load("https://piyush16108.github.io/lets_try/nav.html");
 			
+			var handle = $( "#custom-handle" );
+    			$( "#slider" ).slider({
+      				create: function() {
+        				handle.text( $( this ).slider( "value" ) );
+      				},
+	  
+	  			min: 10,
+	  
+      				slide: function( event, ui ) {
+        				handle.text(ui.value);
+					font_size = $(this).slider("value");
+					$(".alltext").css("font-size", font_size);
+      				}
+   			 });
+	
 			var stickNavBar = true;
 			var showFooter = true;
 			var goToURL = "https://vedabase.io/en/library/";
