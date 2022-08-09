@@ -20,7 +20,7 @@ $(document).ready(function(){
    			 });
 	
 			$("#slider").mouseup(function(){
-				console.log("Nav-placeholder!!!");
+				console.log("increaseFont!!!");
 				$(".increaseFont").css("font-size",$("#slider").slider("option", "value"));
 			});
 	
