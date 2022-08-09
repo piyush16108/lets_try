@@ -21,7 +21,7 @@ $(document).ready(function(){
 	
 			$("#slider").mouseup(function(){
 				console.log("increaseFont!!!");
-				$(".increaseFont").css("font-size",$("#slider").slider("option", "value"));
+				$(".increaseFont, h5").css("font-size",$("#slider").slider("option", "value"));
 			});
 	
 			var stickNavBar = true;
