@@ -15,7 +15,7 @@ $(document).ready(function(){
         				handle.text(ui.value);
 					font_size = $(this).slider("value");
 					$("body, h5").css("font-size", font_size);
-					console.log(//);
+					console.log("//");
       				}
    			 });
 	
