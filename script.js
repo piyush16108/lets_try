@@ -14,14 +14,14 @@ $(document).ready(function(){
       				slide: function( event, ui ) {
         				handle.text(ui.value);
 					font_size = $(this).slider("value");
-					$("body *").not("#nav-placeholder").css("font-size", font_size);
+					$(".increaseFont").css("font-size", font_size);
 					//console.log("//");
       				}
    			 });
 	
 			$("#slider").mouseup(function(){
 				console.log("Nav-placeholder!!!");
-				$("body *").not("#nav-placeholder").css("font-size",$("#slider").slider("option", "value"));
+				$(".increaseFont").css("font-size",$("#slider").slider("option", "value"));
 			});
 	
 			var stickNavBar = true;
