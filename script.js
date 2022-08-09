@@ -19,8 +19,8 @@ $(document).ready(function(){
       				}
    			 });
 	
-			$("#slider").mouseout(function(){
-				console.log("Mouse out!!!");
+			$("#slider").mouseup(function(){
+				console.log("Mouse up!!!");
 				$("body *").not("nav").css("font-size",$("#slider").slider("option", "value"));
 			});
 	
