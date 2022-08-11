@@ -14,7 +14,7 @@ $(document).ready(function(){
       				slide: function( event, ui ) {
         				handle.text(ui.value);
 					font_size = $(this).slider("value");
-					$(".increaseFont").css("font-size", font_size);
+					$(".increaseFont, h5").css("font-size", font_size);
 					//console.log("//");
       				}
    			 });
