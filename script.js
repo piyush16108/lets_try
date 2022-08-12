@@ -1,6 +1,6 @@
 var font_size = 10;
 $(document).ready(function(){
-			//alert("Loading navbar");
+			alert("Position: sticky");
 			$("#nav-placeholder").load("https://piyush16108.github.io/lets_try/nav.html");
 			
 			var handle = $( "#custom-handle" );
