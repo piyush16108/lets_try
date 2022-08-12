@@ -51,10 +51,10 @@
     line-height: 1.6em;
   }
   
-  #slider {
+  /*#slider {
 	width: 80%;
 	margin: auto;
-  }
+  }*/
 
 #stickyDiv {
 	position: -webkit-sticky;
