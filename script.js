@@ -52,6 +52,7 @@ $(document).ready(function(){
 				}
 			});
 			
+			$("#fixedFooter").hide();
 			$("#nav-placeholder").on("click", "#hideFooter", function(){
 				if(showFooter){
 					$("#fixedFooter").hide();
