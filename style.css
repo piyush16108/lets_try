@@ -45,6 +45,7 @@
 #stickyDiv {
 	position: -webkit-sticky;
 	position: sticky;
+	padding: 10px;
 }
 
 #custom-handle {
