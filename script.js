@@ -1,6 +1,6 @@
 var font_size = 10;
 $(document).ready(function(){
-			alert("Position: sticky bottom");
+			alert("No slider");
 			$("#nav-placeholder").load("https://piyush16108.github.io/lets_try/nav.html");
 			
 			var handle = $( "#custom-handle" );
