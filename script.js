@@ -1,6 +1,6 @@
 var font_size = 10;
 $(document).ready(function(){
-			alert("Top 0");
+			alert("Buttons change");
 			$("#nav-placeholder").load("https://piyush16108.github.io/lets_try/nav.html");
 			
 			var handle = $( "#custom-handle" );
