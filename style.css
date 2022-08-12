@@ -43,8 +43,8 @@
 	  */
 
 #stickyDiv {
-	position: fixed;
-	padding-top: 10px;
+	position: -webkit-sticky;
+	position: sticky;
 }
 
 #custom-handle {
