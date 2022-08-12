@@ -24,8 +24,8 @@ $(document).ready(function(){
 				$(".increaseFont, h5").css("font-size",$("#slider").slider("option", "value"));
 			});
 	
-			var stickNavBar = true;
-			var showFooter = true;
+			var stickNavBar = false;
+			var showFooter = false;
 			var goToURL = "https://vedabase.io/en/library/";
 			
 			$("#nav-placeholder").on("click", "#goFindVerse", function(){
