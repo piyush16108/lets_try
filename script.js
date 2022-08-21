@@ -10,7 +10,8 @@ $(document).ready(function(){
       				},
 	  
 	  			min: 10,
-	  
+	  			value: parseInt($(".increaseFont, h5").css("font-size")),
+				
       				slide: function( event, ui ) {
         				handle.text(ui.value);
 					font_size = $(this).slider("value");
