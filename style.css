@@ -63,6 +63,10 @@
 	padding: 10px;
 }
 
+#slider {
+	background: #333;
+}
+
   #fixedFooter {
 	text-align: center;
   	display: flex;
