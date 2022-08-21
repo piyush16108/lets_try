@@ -1,15 +1,17 @@
 var font_size = 10;
+var min_font_size = 10;
+var initial_font_size = 50;
 $(document).ready(function(){
 			alert("Buttons change");
 			$("#nav-placeholder").load("https://piyush16108.github.io/lets_try/nav.html");
-			
+			$(".increaseFont, h5").css("font-size", initial_font_size);
 			var handle = $( "#custom-handle" );
     			$( "#slider" ).slider({
       				create: function() {
         				handle.text( $( this ).slider( "value" ) );
       				},
 	  
-	  			min: 10,
+	  			min: min_font_size,
 	  			value: parseInt($(".increaseFont, h5").css("font-size")),
 				
       				slide: function( event, ui ) {
