@@ -1,7 +1,7 @@
 var font_size = 10;
 var min_font_size = 10;
 var initial_font_size = 50;
-var foot_factor = 0.7;
+var foot_factor = 0.6;
 $(document).ready(function(){
 			alert("Buttons change");
 			$("#nav-placeholder").load("https://piyush16108.github.io/lets_try/nav.html");
