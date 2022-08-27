@@ -1,10 +1,12 @@
 var font_size = 10;
 var min_font_size = 10;
 var initial_font_size = 50;
+var foot_factor = 0.7;
 $(document).ready(function(){
 			alert("Buttons change");
 			$("#nav-placeholder").load("https://piyush16108.github.io/lets_try/nav.html");
 			$(".increaseFont, h5").css("font-size", initial_font_size);
+			$("#fixedFooter").css("font-size", initial_font_size*foot_factor);
 			var handle = $( "#custom-handle" );
     			$( "#slider" ).slider({
       				create: function() {
@@ -18,6 +20,7 @@ $(document).ready(function(){
         				handle.text(ui.value);
 					font_size = $(this).slider("value");
 					$(".increaseFont, h5").css("font-size", font_size);
+					$("#fixedFooter").css("font-size", font_size*foot_factor);
 					//console.log("//");
       				}
    			 });
@@ -25,6 +28,7 @@ $(document).ready(function(){
 			$("#slider").mouseup(function(){
 				console.log("increaseFont!!!");
 				$(".increaseFont, h5").css("font-size",$("#slider").slider("option", "value"));
+				$("#fixedFooter").css("font-size", ($("#slider").slider("option", "value"))*foot_factor);
 			});
 	
 			var stickNavBar = false;
