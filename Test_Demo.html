@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Set the character encoding to UTF-8 -->
+    <meta charset="UTF-8">
+    <!-- Specify the compatibility mode for Internet Explorer -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Set the viewport to control the layout on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Set the title of the web page -->
+    <title>PDF to Text Extractor</title>
+    <!-- Include the PDF.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js" integrity="sha512-ml/QKfG3+Yes6TwOzQb7aCNtJF4PUyha6R3w8pSTo/VJSywl7ZreYvvtUso7fKevpsI+pYVVwnu82YO0q3V6eg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://ganjbasoda.net/converter/ravikant-converters.js" type="text/javascript"></script>
+    <!-- Add some styling for the web page -->
+    <style>
+        /* Center align the heading */
+        h1 {
+            width: 100%;
+            text-align: center;
+        }
+        /* Set the display and alignment for the main and result sections */
+        .pdfwork, .afterupload {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+        }
+        /* Add margin-top to all elements inside .pdfwork */
+        .pdfwork * {
+            margin-top: 5px;
+        }
+        /* Hide the result section initially */
+        .afterupload {
+            display: flex;
+        }
+        /* Hide the "Extract Another PDF" button initially */
+        .another {
+            display: none;
+        }
+        .pdftext {
+            width: 900px;
+            height: 200px
+        }
+    </style>
+</head>
+<body>
+    <!-- Display the heading -->
+    <h1>PDF To HTML Extractor</h1>
+    <!-- Create a div container for the file upload form and result section -->
+    <div class="pdfwork">
+        <select id="canto">
+            <option selected="selected" value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+        </select>
+        <!-- Button to upload the selected PDF -->
+        <button class="upload">Upload</button>
+        <!-- Result section (hidden initially) -->
+        <div class="afterupload">
+            <!-- Display text "Select Page" -->
+            <span>Select Page</span>
+            <!-- Dropdown menu for selecting the page -->
+            <select class="selectpage" onchange="afterProcess()"></select>
+            <!-- Download link for the extracted text file -->
+            <a href="" class="download" download>Download Pdf Text</a>
+            <!-- Textarea to display the extracted text -->
+            <textarea class="pdftext" id="legacy_text" ></textarea>
+            <button class="convert" onclick="convertAllChapters()">Convert</button>
+            <textarea class="pdftext" id="unicode_text"></textarea>
+            <select id="text_or_html" style="visibility:hidden; display:none;"> 
+                <option selected="selected">Plain TEXT</option> 
+                <option>HTML TEXT</option>
+            </select>
+        </div>
+    </div>
+    <div class="pdfwork">
+        <p id="p0"></p>
+        <p id="p1"></p>
+        <p id="p2"></p>
+        <p id="p3"></p>
+        <p id="p4"></p>
+        <p id="p5"></p>
+        <p id="p6"></p>
+        <p id="p7"></p>
+        <p id="p8"></p>
+        <p id="p9"></p>
+        <p id="p10"></p>
+        <p id="p11"></p>
+        <p id="p12"></p>
+        <p id="p13"></p>
+        <p id="p14"></p>
+        <p id="p15"></p>
+        <p id="p16"></p>
+        <p id="p17"></p>
+        <p id="p18"></p>
+        <p id="p19"></p>
+        <p id="p20"></p>
+        <p id="p21"></p>
+        <p id="p22"></p>
+        <p id="p23"></p>
+        <p id="p24"></p>
+        <p id="p25"></p>
+        <p id="p26"></p>
+        <p id="p27"></p>
+        <p id="p28"></p>
+        <p id="p29"></p>
+        <p id="p30"></p>
+        <p id="p31"></p>
+        <p id="p32"></p>
+        <p id="p33"></p>
+        <p id="p34"></p>
+        <p id="p35"></p>
+        <p id="p36"></p>
+        <p id="p37"></p>
+        <p id="p38"></p>
+        <p id="p39"></p>
+        <p id="p40"></p>
+        <p id="p41"></p>
+        <p id="p42"></p>
+        <p id="p43"></p>
+        <p id="p44"></p>
+        <p id="p45"></p>
+        <p id="p46"></p>
+        <p id="p47"></p>
+        <p id="p48"></p>
+        <p id="p49"></p>
+        <p id="p50"></p>
+        <p id="p51"></p>
+        <p id="p52"></p>
+        <p id="p53"></p>
+        <p id="p54"></p>
+        <p id="p55"></p>
+        <p id="p56"></p>
+        <p id="p57"></p>
+        <p id="p58"></p>
+        <p id="p59"></p>
+        <p id="p60"></p>
+        <p id="p61"></p>
+        <p id="p62"></p>
+        <p id="p63"></p>
+        <p id="p64"></p>
+        <p id="p65"></p>
+        <p id="p66"></p>
+        <p id="p67"></p>
+        <p id="p68"></p>
+        <p id="p69"></p>
+        <p id="p70"></p>
+        <p id="p71"></p>
+        <p id="p72"></p>
+        <p id="p73"></p>
+        <p id="p74"></p>
+        <p id="p75"></p>
+        <p id="p76"></p>
+        <p id="p77"></p>
+        <p id="p78"></p>
+        <p id="p79"></p>
+        <p id="p80"></p>
+        <p id="p81"></p>
+        <p id="p82"></p>
+        <p id="p83"></p>
+        <p id="p84"></p>
+        <p id="p85"></p>
+        <p id="p86"></p>
+        <p id="p87"></p>
+        <p id="p88"></p>
+        <p id="p89"></p>
+        <p id="p90"></p>
+        <p id="p91"></p>
+        <p id="p92"></p>
+        <p id="p93"></p>
+        <p id="p94"></p>
+        <p id="p95"></p>
+        <p id="p96"></p>
+        <p id="p97"></p>
+        <p id="p98"></p>
+        <p id="p99"></p>
+        <p id="p100"></p>
+    </div>
+    <!-- JavaScript code -->
+<script>
+    // Set the worker source for PDF.js library
+    var myFile = [];
+    var createFile = async () => {
+        let fileURL = '';
+        let response; let data; let metadata; let file;
+        for(let i=1; i<=12; i++) {
+            if(i<10) fileURL = 'https://piyush16108.github.io/lets_try/sb/SBCanto0'+i+'.pdf';
+            else fileURL = 'https://piyush16108.github.io/lets_try/sb/SBCanto'+i+'.pdf';
+            //else fileURL = 'Test.pdf';
+            response = await fetch(fileURL);
+            data = await response.blob();
+            metadata = {
+                type: 'application/pdf'
+            };
+            if(i<10) file = new File([data], "SBCanto0"+i+".pdf", metadata);
+            else file = new File([data], "SBCanto"+i+".pdf", metadata);
+            // ... do something with the file or return it
+            myFile.push(file);
+            //return file;
+        }
+        
+}
+createFile();
+    pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js";
+    
+    // Get references to various elements
+    //let pdfinput = document.querySelector(".selectpdf"); // Reference to the PDF file input field
+    //let pwd = document.querySelector(".pwd"); // Reference to the password input field
+    let upload = document.querySelector(".upload"); // Reference to the upload button
+    let afterupload = document.querySelector(".afterupload"); // Reference to the result section
+    let selectPage = document.querySelector(".selectpage"); // Reference to the page selection dropdown
+    let download = document.querySelector(".download"); // Reference to the download link
+    let unconvertedTextArea = document.getElementById("legacy_text"); // Reference to the text area for displaying extracted text
+    let unicodeTextArea = document.getElementById("unicode_text");
+    let selectedCanto = document.getElementById("canto");
+    let allDataString = "";
+    let fr = new FileReader(); // Create a new FileReader object
+
+    
+    // Event listener for the upload button click
+    upload.addEventListener('click', () => {
+        //let file = pdfinput.files[0]; // Get the selected PDF file
+
+            fr.readAsDataURL(myFile[parseInt(selectedCanto.value)-1]); // Read the file as data URL
+            fr.onload = () => {
+                let res = fr.result; // Get the result of file reading
+                //if (pwd.value == "") {
+                    extractText(res, false); // Extract text without password
+                //} else {
+                //    extractText(res, true); // Extract text with password
+                //}
+            }
+         
+    });
+    
+    let alltext = []; // Array to store all extracted text
+    
+    // Asynchronous function to extract text from the PDF
+    async function extractText(url, pass) {
+        try {
+            while(alltext.length > 0) alltext.pop();
+            let pdf;
+            if (pass) {
+                pdf = await pdfjsLib.getDocument({ url: url, password: pwd.value }).promise; // Get the PDF document with password
+            } else {
+                pdf = await pdfjsLib.getDocument(url).promise; // Get the PDF document without password
+            }
+            let pages = pdf.numPages; // Get the total number of pages in the PDF
+            for (let i = 1; i <= pages; i++) {
+                let page = await pdf.getPage(i); // Get the page object for each page
+                let txt = await page.getTextContent(); // Get the text content of the page
+                let text = txt.items.map((s) => s.str).join(""); // Concatenate the text items into a single string
+                alltext.push(text); // Add the extracted text to the array
+            }
+            alltext.map((e, i) => {
+                selectPage.innerHTML = `<option value="${i+1}">${i+1}</option>`; // Add options for each page in the page selection dropdown
+            });
+            afterProcess(); // Display the result section
+        } catch (err) {
+            console.log(err);
+        }
+    }
+    
+    // Function to handle the post-processing after text extraction
+    function afterProcess() {
+        unconvertedTextArea.value = alltext[selectPage.value - 1]; // Display the extracted text for the selected page
+        download.href = "data:text/plain;charset=utf-8," + encodeURIComponent(alltext[selectPage.value - 1]); // Set the download link URL for the extracted text
+        afterupload.style.display = "flex"; // Display the result section
+        //document.querySelector(".another").style.display = "unset"; // Display the "Extract Another PDF" button
+        allDataString = "";
+        for(let j=0; j<alltext.length; j++) {
+            allDataString += " " + alltext[j];
+        }
+        unconvertedTextArea.value = allDataString;
+        convertAllChapters();
+    }
+
+    function convertAllChapters() {
+        let currentParagraph;
+        let selectedCantoNo = parseInt(selectedCanto.value);
+        let entireCantoText = unconvertedTextArea.value;
+        let unconvertedSplitArr = entireCantoText.split("Chapter");
+        console.log(unconvertedSplitArr);
+        for(let i=0; i<unconvertedSplitArr.length; i++) {
+            unconvertedTextArea.value = unconvertedSplitArr[i];
+            currentParagraph = document.getElementById("p"+i);
+            convert_to_unicode_chanakya();
+            currentParagraph.innerHTML = "<h2>Chapter " + i + "</h2>" + unicodeTextArea.value;
+        }
+    }
+</script>
+	</body>
+</html>
+
