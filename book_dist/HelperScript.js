@@ -5,19 +5,15 @@ var totalCash = 0;
 var totalDigital = 0;
 var totalCollection = 0;
 $(document).ready(function(){
-    console.log("Hi");
     $("#btnSubmit").on("click", ()=>{
+        $("#btnSubmit").prop('disabled', true);
+        $("#btnSubmit").html("Saving...");
         submitData();
     });
 });
  function submitData(){
-    console.log("Inside Submit");
     let emailBody = getEmailText();
-    console.log(arrCash.length);
-    console.log(emailBody);
-    let data = getSheetDataForAPI();
-    console.log(data);
-    //data.append("Name", "Test JS");
+    let data = getSheetDataForAPI(emailBody);
     fetch(
         "https://script.google.com/macros/s/AKfycby_K6QS9I3OJ__-s4yOuOZjSWiEeVFR-S5qjTAF7v3EFWKJvaaJXNQ5GaF4s7pnkrsVCQ/exec",
         {
@@ -25,7 +21,14 @@ $(document).ready(function(){
             body: data,
             mode: "no-cors"
         }
-    ).then(res => {console.log(res);$("#divResponse").html("Testing");});
+    ).then(res => {
+        console.log(res.status);
+        alert("Data Saved");
+        window.location.reload();
+    }).catch(err => {
+        console.log(err);
+        alert("An error has occurred.");
+    });
  }
 
  function getEmailText() {
@@ -78,7 +81,7 @@ $(document).ready(function(){
     return emailText;
  }
 
- function getSheetDataForAPI() {
+ function getSheetDataForAPI(emailData) {
     let formData = new FormData();
     let preacherCashID = "";
     let preacherCash = "";
@@ -86,6 +89,7 @@ $(document).ready(function(){
     let preacherDigital = "";
     let date = new Date(document.getElementById("txtDate").value);
     date = (date.getMonth()+1) + "/" + date.getDate() + "/" + date.getFullYear();
+    formData.append("Summary", emailData);
     formData.append("Date", date);
     formData.append("Location", document.getElementById("txtLocation").value);
     formData.append("TotalCollection", totalCollection);

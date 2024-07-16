@@ -2,12 +2,36 @@
 <html>
     <head>
         <title>PB Book Distribution Form</title>
+        <link rel="stylesheet" href="bootstrap.min.css">
+        <style>
+            .mySection {
+                padding: 10px;
+                border: 2px solid black;
+                border-radius: 10px;
+                margin: 5px
+            }
+            .mySection > label {
+                font-size:16px;
+                font-weight: 700;
+            }
+            .subSection>label {
+                width: 20%;
+                font-size:14px;
+            }
+            .divButton {
+                align-items: center;
+                justify-content: center;
+            }
+            button {
+                align-items: center;
+            }
+        </style>
     </head>    
     <body>
         <div>
             <div class="mySection">
-                <label>Date: </label> <input id="txtDate" type="date"/></div>
-                <label>Location: </label><input id="txtLocation" type="text"/></div>
+                <div class="subSection"><label>Date: </label> <input id="txtDate" type="date"/></div>
+                <div class="subSection"><label>Location: </label><input id="txtLocation" type="text"/></div>
             </div>
             <div class="mySection">
                 <label class="preacher">HG Abhay Govind P</label>
@@ -180,16 +204,14 @@
                 <div class="subSection"><label>Digital: </label><input id="txtGuest20Digital" class="txtGuestDigital txtDigital" type="number"/></div>
             </div>
         </div>
-        <div>
-            <button id="btnAddNew" type="submit">Add New</button>
-        </div>
-        <div>
-            <button id="btnSubmit" type="submit">Submit</button>
+        <div class="mySection divButton">
+            <button id="btnSubmit" class="btn btn-primary" type="submit">Submit</button>
         </div>
         <div id="divResponse"></div>
         
         <script src="jqueryFile.js"></script>
         <script src="HelperScript.js"></script>
+        <script src="bootstrap.min.js"></script>
     </body>
     
 </html>
