@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        Testing
+    </title>
+</head>
+<body>
+    <div>
+        <br>
+        <span style="font-size: 24px; font-weight: bold;">Total Collection: </span>
+        <span id="totalCollection" style="font-size: 24px; font-weight: bold;"></span><br><br>
+
+        <span style="font-size: 24px; font-weight: bold;">Expenses: </span><input id="expenses" type="number" style="font-size: 20px;" onkeyup="changeNetCollection()"><br><br>
+
+        <span style="font-size: 24px; font-weight: bold;">Net Collection: </span>
+        <span id="netCollection" style="font-size: 24px; font-weight: bold;"></span>
+    </div>
+    <div>
+        <div id="piechart" style="width: 900px; height: 500px;"></div>
+        <main></main>
+    </div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        //google.charts.setOnLoadCallback(drawChart);
+        //const url = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLi6ace5-_nMSO1A7Av8MhrHmrMhm4xT8cRVMshwbdumOziXtsezzL3eUUgsLMOR1iWh4ih8HeYMk9qmMSfXfZS6TCpqr-aop1wr_W0NaQ1Akc3UKxjgu4Nru8oK0sTjjNRso-JoR_IhqoL_BfuHvuJW9iM1Bats1-E4kg1MdYMbjp20WkxYGPceCkLE29XxUqhC_NLJrNiBcDBvHikuaalLiPzMTeYi5Jvo2QQMddn9rqnPiAkDrYHLBm8b3Id1eyQZAEJ--mBivS7SFRzn-ANUz6i1Xg&lib=MzCm91fR5KpAa818JqzrCDMF1nomC9r5d";
+        const url = "https://script.google.com/macros/s/AKfycbwdBf3O72oMqdq2DtF2AOMkZqd6miRtGUQV9J1eHsAbPLhh3AzWMj12qVw5aosO82fx/exec";
+        var arr;
+        var myArr;
+        var newArr = [];
+        var newSubArr = [];
+       //let mainText = document.querySelector("main");
+       //fetch(url).then(result=>result.json()).then(csvData=>{mainText.innerHTML = csvData;console.log(csvData)});
+       fetch(url).then(res => res.json()).then(data => useData(data));
+       
+       function useData(data) {
+        console.log(data);
+        arr = data;
+        console.log(arr);
+        let j=0;
+        /*for(let i=0; i<arr.length; i++){
+            newSubArr = [];
+            for(j=0; j<10; j++) {
+                newSubArr.push(arr[i][j+6])
+            };
+            newArr.push(newSubArr);
+        }*/
+       let unModifiedName = "";
+       let totalCollection = 0;
+       let individualScore = 0;
+       newArr = [];
+       newArr.push(["Name","Collection"]);
+       for(let i=0; i < 24; i+=2) {
+            unModifiedName = arr[0][i+9];
+            individualScore = parseInt(arr[15][i+9]) + parseInt(arr[15][i+10]);
+            console.log(individualScore);
+            if(!(isNaN(individualScore)))  totalCollection += individualScore;
+            newArr.push([unModifiedName.split(' - ')[0],individualScore]);
+       }
+        console.log(newArr);
+
+        /*myArr = [
+          ['Task', 'Hours per Day'],
+          ['Work',     15],
+          ['Eat',      5],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ];*/
+        document.getElementById("totalCollection").innerHTML = totalCollection;
+        drawChart();
+       }
+
+       function drawChart() {
+            //if(myArr.length = 0) {alert(0);return;}
+            var data = google.visualization.arrayToDataTable(newArr);
+            var options = {
+                title: 'Book Distribution Score'
+            };
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+        }
+
+        function changeNetCollection() {
+            if((document.getElementById("expenses").value) == "" || isNaN(document.getElementById("expenses").value)) document.getElementById("netCollection").innerHTML = totalCollection;
+            else {
+                document.getElementById("netCollection").innerHTML = 
+                    parseInt(document.getElementById("totalCollection").innerHTML) - 
+                    parseFloat(document.getElementById("expenses").value)
+            }
+        }
+    </script>
+</body>
+</html>
