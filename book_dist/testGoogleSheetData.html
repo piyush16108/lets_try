@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <title>
-        Testing
+        Sankirtan Report
     </title>
 </head>
 <body>
@@ -13,7 +13,13 @@
         <span style="font-size: 24px; font-weight: bold;">Expenses: </span><input id="expenses" type="number" style="font-size: 20px;" onkeyup="changeNetCollection()"><br><br>
 
         <span style="font-size: 24px; font-weight: bold;">Net Collection: </span>
-        <span id="netCollection" style="font-size: 24px; font-weight: bold;"></span>
+        <span id="netCollection" style="font-size: 24px; font-weight: bold;"></span><br><br>
+
+        <span style="font-size: 20px; font-weight: bold;">Chart Type: </span>
+        <select id="dd" onchange="changeChartType()">
+            <option value="barChart">Bar Chart</option>
+            <option value="pieChart">Pie Chart</option>
+        </select>
     </div>
     <div>
         <div id="piechart" style="width: 900px; height: 500px;"></div>
@@ -46,16 +52,23 @@
             newArr.push(newSubArr);
         }*/
        let unModifiedName = "";
+       let properName = "";
        let totalCollection = 0;
        let individualScore = 0;
+       let e; // to get the dropdown from DOM
        newArr = [];
        newArr.push(["Name","Collection"]);
-       for(let i=0; i < 24; i+=2) {
+       for(let i=0; i < 20; i+=2) {
             unModifiedName = arr[0][i+9];
-            individualScore = parseInt(arr[15][i+9]) + parseInt(arr[15][i+10]);
+            properName = unModifiedName.split(' - ')[0];
+            individualScore = 0;
+            for(j=1; j<arr.length; j++){
+                if(!(isNaN(parseInt(arr[j][i+9])))) individualScore += parseInt(arr[j][i+9]);
+                if(!(isNaN(parseInt(arr[j][i+10])))) individualScore += parseInt(arr[j][i+10]);
+            }
             console.log(individualScore);
             if(!(isNaN(individualScore)))  totalCollection += individualScore;
-            newArr.push([unModifiedName.split(' - ')[0],individualScore]);
+            newArr.push([properName,individualScore]);
        }
         console.log(newArr);
 
@@ -68,10 +81,10 @@
           ['Sleep',    7]
         ];*/
         document.getElementById("totalCollection").innerHTML = totalCollection;
-        drawChart();
+        drawBarChart();
        }
 
-       function drawChart() {
+       function drawPieChart() {
             //if(myArr.length = 0) {alert(0);return;}
             var data = google.visualization.arrayToDataTable(newArr);
             var options = {
@@ -81,6 +94,17 @@
             chart.draw(data, options);
         }
 
+        function drawBarChart() {
+            //if(myArr.length = 0) {alert(0);return;}
+            var data = google.visualization.arrayToDataTable(newArr);
+            var options = {
+                title: 'Book Distribution Score'
+            };
+            var chart = new google.visualization.BarChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+        }
+
+
         function changeNetCollection() {
             if((document.getElementById("expenses").value) == "" || isNaN(document.getElementById("expenses").value)) document.getElementById("netCollection").innerHTML = totalCollection;
             else {
@@ -88,6 +112,13 @@
                     parseInt(document.getElementById("totalCollection").innerHTML) - 
                     parseFloat(document.getElementById("expenses").value)
             }
+        }
+
+        function changeChartType() {
+            e = document.getElementById("dd");
+            selectedChart = e.options[e.selectedIndex].value;
+            if(selectedChart == "pieChart") drawPieChart();
+            else drawBarChart();
         }
     </script>
 </body>
