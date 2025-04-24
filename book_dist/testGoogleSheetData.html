@@ -38,6 +38,8 @@
        //let mainText = document.querySelector("main");
        //fetch(url).then(result=>result.json()).then(csvData=>{mainText.innerHTML = csvData;console.log(csvData)});
        fetch(url).then(res => res.json()).then(data => useData(data));
+
+       addLoginInfo();
        
        function useData(data) {
         console.log(data);
@@ -119,6 +121,19 @@
             selectedChart = e.options[e.selectedIndex].value;
             if(selectedChart == "pieChart") drawPieChart();
             else drawBarChart();
+        }
+
+        function addLoginInfo(){
+            let urlForSiteInfo = "https://script.google.com/macros/s/AKfycbyOEBrpl65yhmtuygh7aqa2BuP8JAMd1xKw3uqS_5HVrYJMOvO-aH1_1qXqbBS9ZjewTw/exec";
+            let formData = new FormData();
+            let siteName = "Sankirtan Score";
+            formData.append("siteName",siteName);
+            console.log(formData);
+            fetch(urlForSiteInfo, {
+                method: 'POST',
+                body: formData,
+                mode:"no-cors"       
+            }).then(res=>res.text()).then(data => {console.log(data)});
         }
     </script>
 </body>
