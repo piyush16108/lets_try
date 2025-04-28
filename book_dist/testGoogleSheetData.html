@@ -23,6 +23,7 @@
     </div>
     <div>
         <div id="piechart" style="width: 900px; height: 500px;"></div>
+        <div id="areachart" style="width: 900px; height: 500px;"></div>
         <main></main>
     </div>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -84,6 +85,43 @@
         ];*/
         document.getElementById("totalCollection").innerHTML = totalCollection;
         drawBarChart();
+        let areaChartArr = [];
+        let tempArr = [];
+        let individualCashScore = 0;
+        let individualDigitalScore = 0;
+        let date;
+        for(i=0; i<arr.length; i++) {
+            tempArr = [];
+            if(i == 0) tempArr.push(arr[i][1]); //Date
+            else {
+                date = new Date(arr[i][1]);
+                tempArr.push(date.getDate().toString());
+            }
+            for(j=0; j<20; j+=2) {
+                if(i>0) {
+                    individualCashScore = 0;
+                    individualDigitalScore = 0;
+                    individualScore = 0;
+                    if(arr[i].length > (j+9)) {
+                        individualCashScore = arr[i][j+9];
+                        if(!isNaN(individualCashScore)) individualScore += individualCashScore;
+                    }
+                    if(arr[i].length > (j+10)) {
+                        individualDigitalScore = arr[i][j+10];
+                        if(!isNaN(individualDigitalScore)) individualScore += individualDigitalScore;
+                    }
+                    tempArr.push(parseInt(individualScore));
+                }
+
+                else {
+                    properName = (arr[i][j+9].split(' - '))[0];
+                    tempArr.push(properName)
+                }
+            }
+            areaChartArr.push(tempArr);
+        }
+        console.log(areaChartArr);
+        drawAreaChart(areaChartArr);
        }
 
        function drawPieChart() {
@@ -106,6 +144,19 @@
             chart.draw(data, options);
         }
 
+        function drawAreaChart(areaChartArr){
+            var data = google.visualization.arrayToDataTable(areaChartArr);
+
+            var options = {
+            title: 'Daily Performance',
+            hAxis: {title: 'March',  titleTextStyle: {color: '#333'}},
+            vAxis: {minValue: 0},
+            isStacked: true
+            };
+
+            var chart = new google.visualization.AreaChart(document.getElementById('areachart'));
+            chart.draw(data, options);
+        }
 
         function changeNetCollection() {
             if((document.getElementById("expenses").value) == "" || isNaN(document.getElementById("expenses").value)) document.getElementById("netCollection").innerHTML = totalCollection;
