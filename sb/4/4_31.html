@@ -8,6 +8,22 @@
   	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   	<script src="https://piyush16108.github.io/lets_try/script.js"></script>
+	<script>
+		addLoginInfo();
+
+		function addLoginInfo(){
+            let urlForSiteInfo = "https://script.google.com/macros/s/AKfycbyOEBrpl65yhmtuygh7aqa2BuP8JAMd1xKw3uqS_5HVrYJMOvO-aH1_1qXqbBS9ZjewTw/exec";
+            let formData = new FormData();
+            let siteName = "SB 4.31";
+            formData.append("siteName",siteName);
+            console.log(formData);
+            fetch(urlForSiteInfo, {
+                method: 'POST',
+                body: formData,
+                mode:"no-cors"       
+            }).then(res=>res.text()).then(data => {console.log(data)});
+        }
+	</script>
  
 	
 </head>
