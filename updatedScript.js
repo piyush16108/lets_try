@@ -2,6 +2,47 @@ var font_size = 10;
 var min_font_size = 10;
 var initial_font_size = 50;
 var foot_factor = 0.6;
+let h5Elements = document.getElementsByTagName("h5");
+let increaseFontElements = document.querySelectorAll('.increaseFont');
+let rangeElement = document.getElementById("inpRange");
+let i,elements;
+
+addLoginInfo();
+setInitialFontSize();
+
+function setInitialFontSize() {
+    increaseFontElements.forEach(div => {
+                    elements = div.querySelectorAll('*');
+                    elements.forEach(element => {
+                        element.style.fontSize = initial_font_size;
+                    });
+                });
+}
+
+function changeFont() {
+    increaseFontElements.forEach(div => {
+                    div.style.fontSize = rangeElement.value;
+                    elements = div.querySelectorAll('*');
+                    elements.forEach(element => {
+                        element.style.fontSize = rangeElement.value;
+                    });
+                });
+}
+
+function addLoginInfo() {
+	let urlForSiteInfo = "https://script.google.com/macros/s/AKfycbyOEBrpl65yhmtuygh7aqa2BuP8JAMd1xKw3uqS_5HVrYJMOvO-aH1_1qXqbBS9ZjewTw/exec";
+	let formData = new FormData();
+	let siteName = "SB 5.1";
+	formData.append("siteName", siteName);
+	console.log(formData);
+	fetch(urlForSiteInfo, {
+		method: 'POST',
+		body: formData,
+		mode: "no-cors"
+	}).then(res => res.text()).then(data => { console.log(data) });
+}
+
+/*
 $(document).ready(function(){
 			//alert("Buttons change");
 			$("#nav-placeholder").load("https://piyush16108.github.io/lets_try/nav.html");
@@ -74,3 +115,4 @@ $(document).ready(function(){
 				}
 			});
 		});
+*/
