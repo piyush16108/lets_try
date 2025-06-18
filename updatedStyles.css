@@ -1,0 +1,111 @@
+/*
+  .fixedFooter  {
+		overflow: hidden;
+		background-color: #333;
+		position: fixed;
+		bottom: 0;
+		width:100%;
+   }
+   
+   .fixedFooter input{
+		margin:10px;
+		text-align:center;
+		background-color: #333;
+		color: #fff;
+		//outline: none;
+		border-top-style: hidden;
+        border-right-style: hidden;
+        border-left-style: hidden;
+		border-bottom-style: hidden;
+   }
+   
+   .fixedFooter #dateInput{
+		float:left;
+		width:10%;
+   }
+   
+   .fixedFooter #verseNoInput{
+		float:right;
+		width:10%;
+		margin-right:90px;
+   }
+   
+   .fixedFooter #speakerInput {
+		width:400px;
+		margin:auto;
+		text-align:center;
+		outline-color:yellow;
+   }
+   
+   .fixedFooter #speakerInput input {
+		width:100%;
+   }
+	  */
+
+.noto-sans-devanagari-body {
+  font-family: "Noto Sans Devanagari", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+#custom-handle {
+    width: 3em;
+    height: 1.6em;
+    top: 50%;
+    margin-top: -.8em;
+    text-align: center;
+    line-height: 1.6em;
+  }
+  
+  /*#slider {
+	width: 80%;
+	margin: auto;
+  }*/
+
+#stickyDiv {
+	position: -webkit-sticky;
+	position: sticky;
+	top:0;
+	padding: 10px;
+}
+
+#slider {
+	background: #333;
+}
+
+  #fixedFooter {
+	text-align: center;
+  	display: flex;
+  	justify-content: center;
+	width: 100%;
+	height:10%;
+	position: fixed;
+	background: #333;
+	color: #fff;
+	bottom: 0;
+	font-size: 40%;
+	padding: 0;
+	border: 0;
+	align:center;
+	 } 
+   
+   .goToVerse {
+		border-radius: 15px;
+		height: 20px;
+   }
+   
+   .goToVerseTextbox {
+		width: 40px;
+		font-size:70%;
+		text-align: center;
+   }
+   
+   #goFindVerse, #hideNavBar, #hideFooter {
+		border-radius: 50px;
+		height: 20px;
+		line-height: 0px;
+   }
+   
